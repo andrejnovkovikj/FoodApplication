@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-white" style="text-centered">All Meals</h1>
+    <div class="table table-stripped table-light border-dark mt-3">
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Meal Image</th>
+                <th>Meal Name</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="meal : ${meals}">
+                <td><img th:src="@{${meal.mealImage_url}}" alt="Meal Image" width="150" height="150"></td>
+                <td th:text="${meal.name}"></td>
+                <td><form th:action="@{/meals/edit/{id}(id=${meal.id})}" method="get">
+                    <button type="submit">Edit</button>
+                </form>
+                </td>
+                <td>
+                <form th:action="@{/meals/delete/{id}(id=${meal.id})}" method="post" >
+                    <button type="submit">Delete</button>
+                </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

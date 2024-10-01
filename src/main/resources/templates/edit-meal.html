@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Meal</title>
+</head>
+<body>
+<h1>Edit Meal</h1>
+
+<form th:action="@{/meals/edit/{id}(id=${meal.id})}" method="POST">
+    <input type="hidden" name="id" th:value="${meal.id}" />
+
+    <div>
+        <label for="name">Meal Name:</label>
+        <input type="text" id="name" name="name" th:value="${meal.name}" required>
+    </div>
+
+    <div>
+        <label for="mealImage_url">Meal Image URL:</label>
+        <input type="text" id="mealImage_url" name="mealImage_url" th:value="${meal.mealImage_url}" required>
+    </div>
+
+    <div>
+        <label for="recipe">Recipe:</label>
+        <textarea id="recipe" name="recipe" required th:text="${meal.recipe}"></textarea>
+    </div>
+
+    <div>
+        <label for="calories">Calories:</label>
+        <input type="number" id="calories" name="calories" th:value="${meal.calories}" required>
+    </div>
+
+    <div>
+        <label for="ingredients">Ingredients:</label>
+        <select id="ingredients" name="ingredients" multiple required>
+            <option th:each="ingredient : ${ingredients}"
+                    th:value="${ingredient.id}">
+                <span th:text="${ingredient.name}"></span>
+            </option>
+        </select>
+    </div>
+
+    <div>
+        <button type="submit">Update Meal</button>
+    </div>
+</form>
+</body>
+</html>

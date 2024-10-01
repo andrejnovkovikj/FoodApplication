@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Ingredient</title>
+</head>
+<body>
+<h1>Edit Ingredient</h1>
+
+<form th:action="@{/ingredients/edit/{id}(id=${ingredient.id})}" method="POST">
+    <input type="hidden" name="id" th:value="${ingredient.id}" />
+    <div>
+        <label for="name">Ingredient Name:</label>
+        <input type="text" id="name" name="name" th:value="${ingredient.name}" required>
+    </div>
+
+    <div>
+        <label for="image_url">Image URL:</label>
+        <input type="text" id="image_url" name="image_url" th:value="${ingredient.image_url}" required>
+    </div>
+
+    <div>
+        <label for="type">Ingredient Type:</label>
+        <select id="type" name="type" required>
+            <option value="VEGETABLE" th:selected="${ingredient.type == 'VEGETABLE'}">Vegetable</option>
+            <option value="FRUIT" th:selected="${ingredient.type == 'FRUIT'}">Fruit</option>
+            <option value="MEAT" th:selected="${ingredient.type == 'MEAT'}">Meat</option>
+            <option value="DAIRY" th:selected="${ingredient.type == 'DAIRY'}">Dairy</option>
+            <option value="OTHER" th:selected="${ingredient.type == 'OTHER'}">Other</option>
+        </select>
+    </div>
+
+    <div>
+        <button type="submit">Update Ingredient</button>
+    </div>
+</form>
+</body>
+</html>
