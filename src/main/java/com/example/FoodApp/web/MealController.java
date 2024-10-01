@@ -43,9 +43,10 @@ public class MealController {
     public String addMeal (@RequestParam String name,
                            @RequestParam String mealImage_url,
                            @RequestParam String recipe,
+                           @RequestParam String ingredients_recipe,
                            @RequestParam int calories,
                            @RequestParam List<Ingredient> ingredients){
-        mealService.create(name,mealImage_url,recipe,calories,ingredients);
+        mealService.create(name,mealImage_url,recipe,ingredients_recipe,calories,ingredients);
         return "redirect:/meals";
     }
     @PostMapping(path = {"/meals/delete/{id}"})
@@ -65,9 +66,10 @@ public class MealController {
     public String editMeal(@PathVariable Long id,@RequestParam String name,
                            @RequestParam String mealImage_url,
                            @RequestParam String recipe,
+                           @RequestParam String ingredients_recipe,
                            @RequestParam int calories,
                            @RequestParam List<Ingredient> ingredients){
-        mealService.update(id, name, mealImage_url, recipe, calories, ingredients);
+        mealService.update(id, name, mealImage_url, recipe,ingredients_recipe, calories, ingredients);
         return "redirect:/meals";
     }
 

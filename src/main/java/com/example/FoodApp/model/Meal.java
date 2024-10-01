@@ -14,6 +14,7 @@ public class Meal {
     private String name;
     private String mealImage_url;
     private String recipe;
+    private String ingredients_recipe;
     private int calories;
     @ManyToMany
     @JoinTable(
@@ -25,24 +26,32 @@ public class Meal {
 
     public Meal(){}
 
-    public Meal(Long id, String name, String mealImage_url, String recipe, int calories, List<Ingredient> ingredients) {
+    public Meal(Long id, String name, String mealImage_url, String recipe,String ingredients_recipe, int calories, List<Ingredient> ingredients) {
         this.id = id;
         this.name = name;
         this.mealImage_url = mealImage_url;
         this.recipe = recipe;
+        this.ingredients_recipe = ingredients_recipe;
         this.calories = calories;
         this.ingredients = ingredients;
     }
 
-    public Meal(String name, String mealImage_url, String recipe, int calories, List<Ingredient> ingredients) {
+    public Meal(String name, String mealImage_url, String recipe,String ingredients_recipe, int calories, List<Ingredient> ingredients) {
         this.name = name;
         this.mealImage_url = mealImage_url;
         this.recipe = recipe;
+        this.ingredients_recipe = ingredients_recipe;
         this.calories = calories;
         this.ingredients = ingredients;
     }
 
+    public String getIngredients_recipe() {
+        return ingredients_recipe;
+    }
 
+    public void setIngredients_recipe(String ingredients_recipe) {
+        this.ingredients_recipe = ingredients_recipe;
+    }
 
     public Long getId() {
         return id;

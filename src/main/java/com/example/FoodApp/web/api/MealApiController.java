@@ -40,6 +40,7 @@ public class MealApiController {
                 meal.getName(),
                 meal.getMealImage_url(),
                 meal.getRecipe(),
+                meal.getIngredients_recipe(),
                 meal.getCalories(),
                 meal.getIngredients()
         );
@@ -53,6 +54,7 @@ public class MealApiController {
                 meal.getName(),
                 meal.getMealImage_url(),
                 meal.getRecipe(),
+                meal.getIngredients_recipe(),
                 meal.getCalories(),
                 meal.getIngredients()
         );

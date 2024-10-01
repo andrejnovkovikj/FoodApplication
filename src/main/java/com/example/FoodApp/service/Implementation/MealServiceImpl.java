@@ -32,17 +32,18 @@ public class MealServiceImpl implements MealService {
     }
 
     @Override
-    public Meal create(String name, String mealImage_url, String recipe, int calories, List<Ingredient> ingredients) {
-        Meal meal = new Meal(name,mealImage_url,recipe,calories,ingredients);
+    public Meal create(String name, String mealImage_url, String recipe,String ingredients_recipe, int calories, List<Ingredient> ingredients) {
+        Meal meal = new Meal(name,mealImage_url,recipe,ingredients_recipe,calories,ingredients);
         return this.mealRepository.save(meal);
     }
 
     @Override
-    public Meal update(Long id, String name, String mealImage_url, String recipe, int calories, List<Ingredient> ingredients) {
+    public Meal update(Long id, String name, String mealImage_url, String recipe,String ingredients_recipe, int calories, List<Ingredient> ingredients) {
         Meal meal = findById(id);
         meal.setName(name);
         meal.setMealImage_url(mealImage_url);
         meal.setRecipe(recipe);
+        meal.setIngredients_recipe(ingredients_recipe);
         meal.setCalories(calories);
         meal.setIngredients(ingredients);
         return this.mealRepository.save(meal);

@@ -14,6 +14,7 @@
             <tr>
                 <th>Meal Image</th>
                 <th>Meal Name</th>
+                <th>Meal Ingredients recipe</th>
                 <th></th>
             </tr>
             </thead>
@@ -21,6 +22,7 @@
             <tr th:each="meal : ${meals}">
                 <td><img th:src="@{${meal.mealImage_url}}" alt="Meal Image" width="150" height="150"></td>
                 <td th:text="${meal.name}"></td>
+                <td th:text="${meal.ingredients_recipe}"></td>
                 <td><form th:action="@{/meals/edit/{id}(id=${meal.id})}" method="get">
                     <button type="submit">Edit</button>
                 </form>
