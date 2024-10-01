@@ -66,4 +66,11 @@ public class MealApiController {
         mealService.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping("/filter")
+    public ResponseEntity<List<Meal>> getMealsByIngredients(@RequestBody List<Long> ingredientIds) {
+        List<Meal> meals = mealService.findMealsByIngredients(ingredientIds);
+        return ResponseEntity.ok(meals);
+    }
+
 }

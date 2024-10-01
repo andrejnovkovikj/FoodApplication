@@ -3,6 +3,7 @@ package com.example.FoodApp.service.Implementation;
 import com.example.FoodApp.model.Ingredient;
 import com.example.FoodApp.model.Meal;
 import com.example.FoodApp.model.exceptions.InvalidMealIdException;
+import com.example.FoodApp.repository.IngredientRepository;
 import com.example.FoodApp.repository.MealRepository;
 import com.example.FoodApp.service.MealService;
 import org.springframework.stereotype.Service;
@@ -11,9 +12,11 @@ import java.util.List;
 @Service
 public class MealServiceImpl implements MealService {
     private final MealRepository mealRepository;
+    private final IngredientRepository ingredientRepository;
 
-    public MealServiceImpl(MealRepository mealRepository) {
+    public MealServiceImpl(MealRepository mealRepository, IngredientRepository ingredientRepository) {
         this.mealRepository = mealRepository;
+        this.ingredientRepository = ingredientRepository;
     }
 
     @Override
@@ -56,4 +59,10 @@ public class MealServiceImpl implements MealService {
         this.mealRepository.delete(meal);
         return meal;
     }
+    @Override
+    public List<Meal> findMealsByIngredients(List<Long> ingredientIds) {
+        Long count = (long) ingredientIds.size();
+        return mealRepository.findMealsByIngredients(ingredientIds, count);
+    }
+
 }

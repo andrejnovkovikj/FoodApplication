@@ -17,5 +17,6 @@ public interface MealService {
     Meal create(String name,String mealImage_url,String recipe,String ingredients_recipe,int calories,List<Ingredient> ingredients);
     Meal update(Long id,String name,String mealImage_url,String recipe,String ingredients_recipe,int calories,List<Ingredient> ingredients);
     Meal delete(Long id);
+    List<Meal> findMealsByIngredients(List<Long> ingredientIds);
 
 }
